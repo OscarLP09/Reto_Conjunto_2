@@ -10,6 +10,10 @@ import java.util.List;
 
 public class UsuarioDAO implements DAO<Usuario> {
     private SessionFactory sessionFactory;
+
+    public UsuarioDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
     @Override
     public List<Usuario> findAll() {
         return List.of();
@@ -35,17 +39,20 @@ public class UsuarioDAO implements DAO<Usuario> {
 
     }
 
-    public Usuario validateUser(String email, String password){
-        try(Session session = sessionFactory.openSession()){
-            Query<Usuario> q = session.createQuery("select u from Usuario u  where u.email = :email and u.contrasena = :contrasena");
+    public Usuario validateUsuario(String email, String password) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Usuario> q = session.createQuery(
+                    "select u from Usuario u where u.email = :email and u.contrasena = :contrasena", Usuario.class
+            );
             q.setParameter("email", email);
-            q.setParameter("password", password);
+            q.setParameter("contrasena", password);
 
             Usuario user = q.uniqueResult();
-            Usuario user1 = session.get(Usuario.class, user.getId());
-            user1.getCopias();
-
+            if (user != null) {
+                user.getCopias();
+            }
             return user;
         }
     }
+
 }
