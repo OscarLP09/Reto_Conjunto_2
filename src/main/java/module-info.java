@@ -6,6 +6,8 @@ module org.example.reto_conjunto {
     requires jakarta.persistence;
     requires java.naming;
 
+    opens org.example.reto_conjunto.models to org.hibernate.orm.core;
+
 
     opens org.example.reto_conjunto to javafx.fxml;
     exports org.example.reto_conjunto;

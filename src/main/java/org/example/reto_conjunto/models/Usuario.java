@@ -8,21 +8,18 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="Usuario")
+@Table(name = "Usuario")
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     private String nombre;
     private String apellidos;
     private String email;
     private String contrasena;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Copias> copias;
 
-    public void addCopias(Copias copia) {
-        copia.setUsuario(this);
-        this.copias.add(copia);
-    }
 }

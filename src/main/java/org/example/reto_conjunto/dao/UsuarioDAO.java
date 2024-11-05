@@ -14,45 +14,51 @@ public class UsuarioDAO implements DAO<Usuario> {
     public UsuarioDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    @Override
+
     public List<Usuario> findAll() {
-        return List.of();
+        try (Session session = sessionFactory.openSession()) {
+            Query<Usuario> query = session.createQuery("from Usuario", Usuario.class);
+            return query.list();
+        }
     }
 
-    @Override
     public Usuario findById(Long id) {
-        return null;
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Usuario.class, id);
+        }
     }
 
-    @Override
     public void save(Usuario usuario) {
-
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(usuario);
+            session.getTransaction().commit();
+        }
     }
 
-    @Override
     public void update(Usuario usuario) {
-
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.update(usuario);
+            session.getTransaction().commit();
+        }
     }
 
-    @Override
     public void delete(Usuario usuario) {
-
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.delete(usuario);
+            session.getTransaction().commit();
+        }
     }
 
     public Usuario validateUsuario(String email, String password) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Usuario> q = session.createQuery(
-                    "select u from Usuario u where u.email = :email and u.contrasena = :contrasena", Usuario.class
-            );
-            q.setParameter("email", email);
-            q.setParameter("contrasena", password);
-
-            Usuario user = q.uniqueResult();
-            if (user != null) {
-                user.getCopias();
-            }
-            return user;
+            Query<Usuario> query = session.createQuery(
+                    "from Usuario where email = :email and contrasena = :contrasena", Usuario.class);
+            query.setParameter("email", email);
+            query.setParameter("contrasena", password);
+            return query.uniqueResult();
         }
     }
-
 }

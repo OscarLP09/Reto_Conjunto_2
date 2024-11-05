@@ -1,32 +1,80 @@
 package org.example.reto_conjunto.dao;
 
+import org.example.reto_conjunto.HibernateUtil;
 import org.example.reto_conjunto.models.Peliculas;
 
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
-public class PeliculasDAO implements DAO<Peliculas> {
-    @Override
+public class PeliculasDAO implements DAO<Peliculas>  {
+    private SessionFactory sessionFactory;
+
+    public PeliculasDAO() {
+
+    }
+
+    public PeliculasDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     public List<Peliculas> findAll() {
-        return List.of();
+        try (Session session = sessionFactory.openSession()) {
+            Query<Peliculas> query = session.createQuery("from Peliculas", Peliculas.class);
+            return query.list();
+        }
     }
 
-    @Override
     public Peliculas findById(Long id) {
-        return null;
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Peliculas.class, id);
+        }
     }
 
-    @Override
-    public void save(Peliculas peliculas) {
-
+    public void save(Peliculas pelicula) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(pelicula);
+            session.getTransaction().commit();
+        }
     }
 
-    @Override
-    public void update(Peliculas peliculas) {
-
+    public void update(Peliculas pelicula) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.update(pelicula);
+            session.getTransaction().commit();
+        }
     }
 
-    @Override
-    public void delete(Peliculas peliculas) {
+    public void delete(Peliculas pelicula) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.delete(pelicula);
+            session.getTransaction().commit();
+        }
+    }
 
+    public List<Peliculas> findByGenero(String genero) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Peliculas> query = session.createQuery("from Peliculas     where genero = :genero", Peliculas.class);
+            query.setParameter("genero", genero);
+            return query.list();
+        }
+    }
+
+    public List<Object[]> obtenerPeliculasYCopias() {
+        List<Object[]> listaPeliculasCopias;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = """
+                SELECT p, c
+                FROM Peliculas p JOIN Copias c ON p.id = c.id_pelicula
+            """;
+            Query<Object[]> query = session.createQuery(hql, Object[].class);
+            listaPeliculasCopias = query.getResultList();
+        }
+        return listaPeliculasCopias;
     }
 }

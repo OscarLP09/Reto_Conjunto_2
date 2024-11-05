@@ -8,17 +8,19 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="Peliculas")
+@Table(name = "peliculas")
 public class Peliculas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre_peli;
+
+    private String nombrePeli;
     private String genero;
-    private Integer year;
+    private int año;
     private String descripcion;
     private String director;
 
-    @OneToMany(mappedBy = "peliculas", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Copias> copias;
+
 }

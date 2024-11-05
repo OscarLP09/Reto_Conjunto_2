@@ -13,12 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.reto_conjunto.HelloController">
    <center>
       <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="353.0" text="LOGIN">
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="353.0" text="LOGIN" wrapText="true">
                <VBox.margin>
                   <Insets left="250.0" top="25.0" />
                </VBox.margin>
@@ -64,24 +63,23 @@
                   </PasswordField>
                </children>
             </GridPane>
-            <FlowPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="600.0">
-               <VBox.margin>
-                  <Insets top="75.0" />
-               </VBox.margin>
-               <children>
-                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#setCancelBtn" text="Cancelar">
-                     <FlowPane.margin>
-                        <Insets left="200.0" />
-                     </FlowPane.margin>
-                  </Button>
-                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#setLoginBtn" prefHeight="26.0" prefWidth="56.0" text="Login">
-                     <FlowPane.margin>
-                        <Insets left="50.0" />
-                     </FlowPane.margin>
-                  </Button>
-               </children>
-            </FlowPane>
          </children>
       </VBox>
    </center>
+   <bottom>
+      <FlowPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="registerBtn" mnemonicParsing="false" onAction="#setRegisterBtn" text="Registrarse">
+               <FlowPane.margin>
+                  <Insets left="225.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#setLoginBtn" prefHeight="26.0" prefWidth="56.0" text="Login">
+               <FlowPane.margin>
+                  <Insets left="50.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+      </FlowPane>
+   </bottom>
 </BorderPane>

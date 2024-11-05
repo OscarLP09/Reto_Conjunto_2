@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.reto_conjunto.RegisterController">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="520.0" style="-fx-background-color: #E96151;">
+         <children>
+            <Label layoutX="202.0" layoutY="22.0" text="REGISTRO" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="80.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Pictures/Screenshots/Captura%20de%20pantalla%202024-10-23%20133323.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="124.0" layoutY="116.0" text="Nombre" />
+      <TextField fx:id="nombreTxt" layoutX="204.0" layoutY="112.0" />
+      <Label layoutX="121.0" layoutY="163.0" text="Apellidos" />
+      <TextField fx:id="apellidosTxt" layoutX="205.0" layoutY="159.0" />
+      <Label layoutX="128.0" layoutY="213.0" text="Correo" />
+      <TextField fx:id="correoTxt" layoutX="205.0" layoutY="209.0" />
+      <Label layoutX="116.0" layoutY="266.0" text="Contraseña" />
+      <FlowPane layoutX="-2.0" layoutY="333.0" prefHeight="80.0" prefWidth="520.0">
+         <children>
+            <Button fx:id="volverBtn" mnemonicParsing="false" onAction="#setVolverBtn" text="Volver">
+               <FlowPane.margin>
+                  <Insets left="220.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="confirmarBtn" mnemonicParsing="false" onAction="#setConfirmarBtn" text="Confirmar">
+               <FlowPane.margin>
+                  <Insets left="10.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+      </FlowPane>
+      <PasswordField fx:id="contrasenaTxt" layoutX="206.0" layoutY="262.0" />
+   </children>
+</AnchorPane>

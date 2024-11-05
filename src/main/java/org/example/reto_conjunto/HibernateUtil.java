@@ -9,8 +9,6 @@ public class HibernateUtil {
     static{
         sessionFactory = new Configuration()
                 .configure()
-                .setProperty("hibernate.connection.password",System.getenv("hibernate_password"))
-                .setProperty("hibernate.connection.username",System.getenv("hibernate_username"))
                 .buildSessionFactory();
     }
 

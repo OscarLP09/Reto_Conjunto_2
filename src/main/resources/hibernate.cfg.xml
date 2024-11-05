@@ -11,6 +11,8 @@ https://github.com/hibernate/dtd/blob/main/hibernate-configuration-3.0.dtd
 
         <property name="connection.url">jdbc:mysql://localhost:3306/mymovies</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Leoyloki22110909</property>
 
         <property name="show_sql">true</property>
 
