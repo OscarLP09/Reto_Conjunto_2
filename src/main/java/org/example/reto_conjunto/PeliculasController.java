@@ -1,26 +1,21 @@
 package org.example.reto_conjunto;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.reto_conjunto.dao.PeliculasCopiaDAO;
 import org.example.reto_conjunto.dao.PeliculasDAO;
-import org.example.reto_conjunto.models.Copias;
-import org.example.reto_conjunto.models.Peliculas;
+import org.example.reto_conjunto.models.PeliculasCopia;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class PeliculasController{
 
     @FXML
-    private TableView<Object[]> peliculasTable; // Usamos Object[] para almacenar ambos objetos
+    private TableView<PeliculasCopia> peliculasTable; // Usamos Object[] para almacenar ambos objetos
     @FXML
     private TableColumn<Object[], String> tituloColumn;
     @FXML
@@ -48,9 +43,16 @@ public class PeliculasController{
     }
 
     private void cargarDatos() {
-        List<Object[]> peliculasCopias = peliculaDAO.obtenerPeliculasYCopias();
-        ObservableList<Object[]> observableList = FXCollections.observableArrayList(peliculasCopias);
+        List<PeliculasCopia> listaPeliculas = PeliculasCopiaDAO.obtenerPeliculasYCopias();
+        ObservableList<PeliculasCopia> observableList = FXCollections.observableArrayList(listaPeliculas);
+
+        tituloColumn.setCellValueFactory(new PropertyValueFactory<>("nombrePeli"));
+        estadoColumn.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        soporteColumn.setCellValueFactory(new PropertyValueFactory<>("soporte"));
+
         peliculasTable.setItems(observableList);
     }
+
 
 }
