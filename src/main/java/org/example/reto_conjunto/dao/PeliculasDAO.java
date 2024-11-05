@@ -69,12 +69,13 @@ public class PeliculasDAO implements DAO<Peliculas>  {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             String hql = """
-                SELECT p, c
-                FROM Peliculas p JOIN Copias c ON p.id = c.id_pelicula
-            """;
+            SELECT p.nombrePeli, c.estado, c.cantidad, c.soporte
+            FROM Peliculas p JOIN p.copias c
+        """;
             Query<Object[]> query = session.createQuery(hql, Object[].class);
             listaPeliculasCopias = query.getResultList();
         }
         return listaPeliculasCopias;
     }
+
 }

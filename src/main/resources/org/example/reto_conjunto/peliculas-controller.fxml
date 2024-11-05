@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TableView layoutY="56.0" prefHeight="346.0" prefWidth="600.0">
+            <TableView fx:id="peliculasTable" layoutY="56.0" prefHeight="346.0" prefWidth="600.0">
               <columns>
                 <TableColumn fx:id="tituloColumn" prefWidth="182.39996641874313" text="Titulo" />
                 <TableColumn fx:id="estadoColumn" minWidth="0.0" prefWidth="112.80003356933594" text="Estado" />
