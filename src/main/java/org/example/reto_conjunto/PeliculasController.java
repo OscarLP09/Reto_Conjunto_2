@@ -15,7 +15,7 @@ import java.util.List;
 public class PeliculasController{
 
     @FXML
-    private TableView<PeliculasCopia> peliculasTable; // Usamos Object[] para almacenar ambos objetos
+    private TableView<PeliculasCopia> peliculasTable;
     @FXML
     private TableColumn<Object[], String> tituloColumn;
     @FXML

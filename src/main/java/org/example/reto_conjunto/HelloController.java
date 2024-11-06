@@ -55,7 +55,7 @@ public class HelloController implements Initializable {
             alert.setContentText("Inicio de sesión exitoso. ¡Bienvenido!");
             alert.showAndWait();
 
-            // Cargar la nueva pantalla
+
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("peliculas-controller.fxml"));
                 Parent root = loader.load();
