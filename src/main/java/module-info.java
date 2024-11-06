@@ -7,6 +7,6 @@ module org.example.reto_conjunto {
     requires java.naming;
 
     opens org.example.reto_conjunto.models to javafx.base, org.hibernate.orm.core; // Abre a javafx.base y Hibernate
-    opens org.example.reto_conjunto to javafx.fxml; // Mantén este para FXML
+    opens org.example.reto_conjunto to javafx.fxml;
     exports org.example.reto_conjunto;
 }

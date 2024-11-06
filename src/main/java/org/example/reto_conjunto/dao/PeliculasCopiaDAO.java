@@ -39,9 +39,6 @@ public class PeliculasCopiaDAO implements DAO<PeliculasCopia> {
         return resultados; // Ahora devuelve la lista de PeliculasCopia
     }
 
-
-    // Métodos adicionales de la interfaz DAO...
-
     @Override
     public List<PeliculasCopia> findAll() {
         return List.of();
