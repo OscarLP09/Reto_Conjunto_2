@@ -1,6 +1,6 @@
 package org.example.reto_conjunto.models;
 
-public class PeliculasCopia {
+public class    PeliculasCopia {
     private String nombrePeli;
     private String estado;
     private Integer cantidad;

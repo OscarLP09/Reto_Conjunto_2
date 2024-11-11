@@ -69,7 +69,7 @@ public class PeliculasDAO implements DAO<Peliculas>  {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             String hql = """
-            SELECT p.nombrePeli, c.estado, c.cantidad, c.soporte
+             SELECT p.nombrePeli, c.estado, c.cantidad, c.soporte
             FROM Peliculas p JOIN p.copias c
         """;
             Query<Object[]> query = session.createQuery(hql, Object[].class);

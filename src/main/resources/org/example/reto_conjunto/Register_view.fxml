@@ -22,7 +22,7 @@
             </Label>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="440.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/agregar.png" />
+                  <Image url="@../../../../../../../../Downloads/agregar.png" />
                </image>
             </ImageView>
          </children>

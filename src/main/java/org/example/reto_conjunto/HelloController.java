@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.reto_conjunto.dao.UsuarioDAO;
 import org.example.reto_conjunto.models.Usuario;
 
@@ -35,6 +37,13 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
           usuarioDAO = new UsuarioDAO(HibernateUtil.getSessionFactory());
     }
+    public class Sesion {
+        @Setter
+        @Getter
+        private static int usuarioId;
+
+    }
+
 
     @FXML
     public void setRegisterBtn(ActionEvent actionEvent) {

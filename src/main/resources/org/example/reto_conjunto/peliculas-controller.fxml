@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.reto_conjunto.PeliculasController">
+<AnchorPane prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.reto_conjunto.PeliculasController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="peliculasTable" editable="true" layoutY="56.0" prefHeight="346.0" prefWidth="600.0" style="-fx-background-color: #F0FFF0;">
+            <TableView fx:id="peliculasTable" editable="true" layoutX="-1.0" layoutY="56.0" prefHeight="346.0" prefWidth="601.0" style="-fx-background-color: #F0FFF0;">
               <columns>
-                <TableColumn fx:id="tituloColumn" prefWidth="224.79993283748627" style="-fx-background-color: #F0FFF0;" text="Titulo" />
-                <TableColumn fx:id="estadoColumn" minWidth="0.0" prefWidth="119.2000732421875" style="-fx-background-color: #F0FFF0;" text="Estado" />
-                  <TableColumn fx:id="cantidadColumn" prefWidth="95.20001220703125" style="-fx-background-color: #F0FFF0;" text="Cantidad" />
-                  <TableColumn fx:id="soporteColumn" prefWidth="163.99996948242188" style="-fx-background-color: #F0FFF0;" text="Soporte" />
+                <TableColumn fx:id="tituloColumn" prefWidth="224.00000607967377" style="-fx-background-color: #F0FFF0;" text="Titulo" />
+                <TableColumn fx:id="estadoColumn" minWidth="0.0" prefWidth="140.79998779296875" style="-fx-background-color: #F0FFF0;" text="Estado" />
+                  <TableColumn fx:id="cantidadColumn" prefWidth="92.79998779296875" style="-fx-background-color: #F0FFF0;" text="Cantidad" />
+                  <TableColumn fx:id="soporteColumn" prefWidth="140.00003051757812" style="-fx-background-color: #F0FFF0;" text="Soporte" />
               </columns>
             </TableView>
-            <BorderPane layoutX="-1.0" layoutY="-2.0" prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #E96151;">
+            <BorderPane layoutX="-1.0" layoutY="-2.0" prefHeight="58.0" prefWidth="601.0" style="-fx-background-color: #E96151;">
                <center>
                   <Label text="PELICULAS" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>

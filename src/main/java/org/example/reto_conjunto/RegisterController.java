@@ -64,5 +64,7 @@ public class RegisterController implements Initializable {
 
 
         System.out.println("Usuario registrado correctamente.");
+
+        HelloApplication.loadFXML("hello-view.fxml", "Inicio Sesión");
     }
 }

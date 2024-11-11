@@ -43,7 +43,8 @@ public class PeliculasController{
     }
 
     private void cargarDatos() {
-        List<PeliculasCopia> listaPeliculas = PeliculasCopiaDAO.obtenerPeliculasYCopias();
+        int userId = HelloController.Sesion.getUsuarioId(); // Obtener el id del usuario logueado
+        List<PeliculasCopia> listaPeliculas = PeliculasCopiaDAO.obtenerPeliculasYCopias(userId); // Filtrar las pelis y copias por el usuario logueado
         ObservableList<PeliculasCopia> observableList = FXCollections.observableArrayList(listaPeliculas);
 
         tituloColumn.setCellValueFactory(new PropertyValueFactory<>("nombrePeli"));
@@ -53,6 +54,8 @@ public class PeliculasController{
 
         peliculasTable.setItems(observableList);
     }
+
+
 
 
 }
