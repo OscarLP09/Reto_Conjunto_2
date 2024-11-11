@@ -20,20 +20,20 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="80.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="440.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Pictures/Screenshots/Captura%20de%20pantalla%202024-10-23%20133323.png" />
+                  <Image url="@images/agregar.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <Label layoutX="124.0" layoutY="116.0" text="Nombre" />
-      <TextField fx:id="nombreTxt" layoutX="204.0" layoutY="112.0" />
-      <Label layoutX="121.0" layoutY="163.0" text="Apellidos" />
-      <TextField fx:id="apellidosTxt" layoutX="205.0" layoutY="159.0" />
-      <Label layoutX="128.0" layoutY="213.0" text="Correo" />
-      <TextField fx:id="correoTxt" layoutX="205.0" layoutY="209.0" />
-      <Label layoutX="116.0" layoutY="266.0" text="Contraseña" />
+      <Label layoutX="171.0" layoutY="116.0" text="Nombre" />
+      <TextField fx:id="nombreTxt" layoutX="244.0" layoutY="112.0" />
+      <Label layoutX="168.0" layoutY="163.0" text="Apellidos" />
+      <TextField fx:id="apellidosTxt" layoutX="244.0" layoutY="159.0" />
+      <Label layoutX="174.0" layoutY="213.0" text="Correo" />
+      <TextField fx:id="correoTxt" layoutX="244.0" layoutY="209.0" />
+      <Label layoutX="162.0" layoutY="266.0" text="Contraseña" />
       <FlowPane layoutX="-2.0" layoutY="333.0" prefHeight="80.0" prefWidth="520.0">
          <children>
             <Button fx:id="volverBtn" mnemonicParsing="false" onAction="#setVolverBtn" text="Volver">
@@ -48,6 +48,6 @@
             </Button>
          </children>
       </FlowPane>
-      <PasswordField fx:id="contrasenaTxt" layoutX="206.0" layoutY="262.0" />
+      <PasswordField fx:id="contrasenaTxt" layoutX="244.0" layoutY="262.0" />
    </children>
 </AnchorPane>

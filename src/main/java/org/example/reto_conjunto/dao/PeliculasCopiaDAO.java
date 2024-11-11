@@ -36,7 +36,7 @@ public class PeliculasCopiaDAO implements DAO<PeliculasCopia> {
             session.close();
         }
 
-        return resultados; // Ahora devuelve la lista de PeliculasCopia
+        return resultados;
     }
 
     @Override
