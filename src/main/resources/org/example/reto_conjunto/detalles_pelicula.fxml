@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
 
 <AnchorPane prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.reto_conjunto.DetallesPeliculaController">
-
+   <children>
+      <AnchorPane layoutY="53.0" prefHeight="347.0" prefWidth="520.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="176.0" fitWidth="178.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="18.0" layoutY="212.0" text="Género" />
+            <Label layoutX="27.0" layoutY="253.0" text="Año" />
+            <Label layoutX="297.0" layoutY="36.0" text="Descripción" />
+            <Label layoutX="16.0" layoutY="296.0" text="Director" />
+            <Label layoutX="296.0" layoutY="212.0" text="Cantidad" />
+            <Label layoutX="296.0" layoutY="262.0" text="Estado" />
+            <TextField fx:id="generoTxt" layoutX="71.0" layoutY="209.0" />
+            <TextField fx:id="anhoTxt" layoutX="72.0" layoutY="249.0" />
+            <TextField fx:id="directorTxt" layoutX="73.0" layoutY="292.0" />
+            <TextArea fx:id="descripcionTxt" layoutX="302.0" layoutY="58.0" prefHeight="121.0" prefWidth="178.0" />
+            <Spinner fx:id="cantidadSpinner" layoutX="356.0" layoutY="208.0" />
+            <ChoiceBox fx:id="estadoChoice" layoutX="356.0" layoutY="258.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <BorderPane prefHeight="67.0" prefWidth="520.0">
+         <center>
+            <Label fx:id="nom_peli" text="Label" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>

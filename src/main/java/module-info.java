@@ -5,6 +5,7 @@ module org.example.reto_conjunto {
     requires static lombok;
     requires jakarta.persistence;
     requires java.naming;
+    requires java.desktop;
 
     opens org.example.reto_conjunto.models to javafx.base, org.hibernate.orm.core;
     opens org.example.reto_conjunto to javafx.fxml;

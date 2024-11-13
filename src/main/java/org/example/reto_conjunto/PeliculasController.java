@@ -3,16 +3,22 @@ package org.example.reto_conjunto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.example.reto_conjunto.dao.PeliculasCopiaDAO;
 import org.example.reto_conjunto.dao.PeliculasDAO;
 import org.example.reto_conjunto.models.PeliculasCopia;
 
+import java.io.IOException;
 import java.util.List;
 
-public class PeliculasController{
+public class PeliculasController {
 
     @FXML
     private TableView<PeliculasCopia> peliculasTable;
@@ -31,7 +37,6 @@ public class PeliculasController{
         this.peliculaDAO = new PeliculasDAO();
     }
 
-
     @FXML
     private void initialize() {
         tituloColumn.setCellValueFactory(new PropertyValueFactory<>("titulo"));
@@ -40,6 +45,18 @@ public class PeliculasController{
         soporteColumn.setCellValueFactory(new PropertyValueFactory<>("soporte"));
 
         cargarDatos();
+
+        // Agregar evento de clic a las filas de la tabla
+        peliculasTable.setRowFactory(tv -> {
+            TableRow<PeliculasCopia> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 1) {
+                    PeliculasCopia peliculaSeleccionada = row.getItem();
+                    mostrarDetallesPelicula(peliculaSeleccionada);
+                }
+            });
+            return row;
+        });
     }
 
     private void cargarDatos() {
@@ -55,7 +72,21 @@ public class PeliculasController{
         peliculasTable.setItems(observableList);
     }
 
+    private void mostrarDetallesPelicula(PeliculasCopia peliculaSeleccionada) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("detalles_pelicula.fxml"));
+            Parent root = loader.load();
 
+            // Accede al controlador de la nueva pantalla y pásale la película seleccionada
+            DetallesPeliculaController detallesController = loader.getController();
+            detallesController.setPelicula(peliculaSeleccionada);
 
-
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Detalles de la Película");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

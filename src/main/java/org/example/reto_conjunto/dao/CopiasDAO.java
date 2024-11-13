@@ -5,16 +5,31 @@ import org.example.reto_conjunto.models.Copias;
 import org.example.reto_conjunto.models.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import java.util.List;
 import org.hibernate.query.Query;
 
-import java.util.List;
-
 public class CopiasDAO {
-    private SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
     public CopiasDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
+    // Método para obtener una copia específica según el usuario y la película
+    public static Copias obtenerCopiaPorUsuarioYPelicula(int usuarioId, int peliculaId) {
+        Copias copia = null;
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Copias c WHERE c.usuario.id = :usuarioId AND c.pelicula.id = :peliculaId";
+            Query<Copias> query = session.createQuery(hql, Copias.class);
+            query.setParameter("usuarioId", usuarioId);
+            query.setParameter("peliculaId", peliculaId);
+            copia = query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return copia;
+    }
+
 
     public List<Copias> findAllByUsuario(Usuario usuario) {
         try (Session session = sessionFactory.openSession()) {
@@ -62,5 +77,4 @@ public class CopiasDAO {
 
         return copias;
     }
-
 }
