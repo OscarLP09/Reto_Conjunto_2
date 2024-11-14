@@ -64,6 +64,7 @@ public class PeliculasDAO implements DAO<Peliculas>  {
         }
     }
 
+
     public List<Object[]> obtenerPeliculasYCopias() {
         List<Object[]> listaPeliculasCopias;
 
@@ -78,4 +79,23 @@ public class PeliculasDAO implements DAO<Peliculas>  {
         return listaPeliculasCopias;
     }
 
+        public Peliculas obtenerPeliculaPorNombre(String nombrePeli) {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Peliculas pelicula = null;
+            try {
+                Query<Peliculas> query = session.createQuery("FROM Peliculas WHERE nombrePeli = :nombrePeli", Peliculas.class);
+                query.setParameter("nombrePeli", nombrePeli);
+                pelicula = query.uniqueResult();
+                if (pelicula == null) {
+                    System.out.println("No se encontró la película: " + nombrePeli);
+                } else {
+                    System.out.println("Pelicula encontrada: " + pelicula.getNombrePeli());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                session.close();
+            }
+            return pelicula;
+        }
 }

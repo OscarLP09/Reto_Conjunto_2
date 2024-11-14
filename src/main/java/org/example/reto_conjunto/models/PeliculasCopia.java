@@ -1,7 +1,6 @@
 package org.example.reto_conjunto.models;
 
 public class PeliculasCopia {
-    private int id;
     private String nombrePeli;
     private String genero;
     private int anho;
@@ -11,8 +10,7 @@ public class PeliculasCopia {
     private String soporte;
 
     // Constructor
-    public PeliculasCopia(int id, String nombrePeli, String genero, int anho, String director, String estado, Integer cantidad, String soporte) {
-        this.id = id;
+    public PeliculasCopia(String nombrePeli, String genero, int anho, String director, String estado, Integer cantidad, String soporte) {
         this.nombrePeli = nombrePeli;
         this.genero = genero;
         this.anho = anho;
@@ -29,15 +27,9 @@ public class PeliculasCopia {
         this.soporte = soporte;
     }
 
+
+
     // Getters y Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNombrePeli() {
         return nombrePeli;
     }

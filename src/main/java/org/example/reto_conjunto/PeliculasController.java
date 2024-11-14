@@ -46,13 +46,12 @@ public class PeliculasController {
 
         cargarDatos();
 
-        // Agregar evento de clic a las filas de la tabla
         peliculasTable.setRowFactory(tv -> {
             TableRow<PeliculasCopia> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getClickCount() == 1) {
                     PeliculasCopia peliculaSeleccionada = row.getItem();
-                    mostrarDetallesPelicula(peliculaSeleccionada);
+                    verDetallesPelicula(peliculaSeleccionada);
                 }
             });
             return row;
@@ -72,21 +71,26 @@ public class PeliculasController {
         peliculasTable.setItems(observableList);
     }
 
-    private void mostrarDetallesPelicula(PeliculasCopia peliculaSeleccionada) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("detalles_pelicula.fxml"));
-            Parent root = loader.load();
+    @FXML
+    private void verDetallesPelicula(PeliculasCopia peliculaSeleccionada) {
+        if (peliculaSeleccionada != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("detalles_pelicula.fxml"));
+                Parent detallesRoot = loader.load();
 
-            // Accede al controlador de la nueva pantalla y pásale la película seleccionada
-            DetallesPeliculaController detallesController = loader.getController();
-            detallesController.setPelicula(peliculaSeleccionada);
+                // Accede al controlador de la nueva pantalla y pásale la película seleccionada
+                DetallesPeliculaController detallesController = loader.getController();
+                detallesController.setPelicula(peliculaSeleccionada);
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Detalles de la Película");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                // Muestra la ventana de detalles
+                Stage detallesStage = new Stage();
+                detallesStage.setScene(new Scene(detallesRoot));
+                detallesStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
+
+
 }
