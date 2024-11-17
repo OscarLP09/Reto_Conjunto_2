@@ -1,28 +1,57 @@
-    package org.example.reto_conjunto.models;
+/**
+ * Clase que representa una entidad de película en el sistema.
+ * Esta clase contiene información sobre la película, como su nombre, género, año de lanzamiento,
+ * descripción, director y las copias asociadas.
+ */
+package org.example.reto_conjunto.models;
 
-    import jakarta.persistence.*;
-    import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Data;
+import java.io.Serializable;
+import java.util.List;
 
-    import java.io.Serializable;
-    import java.util.List;
+@Data
+@Entity
+@Table(name = "peliculas")
+public class Peliculas implements Serializable {
 
-    @Data
-    @Entity
-    @Table(name = "peliculas")
-    public class Peliculas implements Serializable {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    /**
+     * Identificador único de la película.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @Column(name = "nombre_peli")
-        private String nombrePeli;
+    /**
+     * Nombre de la película.
+     */
+    @Column(name = "nombre_peli")
+    private String nombrePeli;
 
-        private String genero;
-        private int año;
-        private String descripcion;
-        private String director;
+    /**
+     * Género de la película (e.g., comedia, drama, ciencia ficción).
+     */
+    private String genero;
 
-        @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-        private List<Copias> copias;
+    /**
+     * Año de lanzamiento de la película.
+     */
+    private int año;
 
-    }
+    /**
+     * Descripción de la película, que incluye detalles sobre la trama o características relevantes.
+     */
+    private String descripcion;
+
+    /**
+     * Nombre del director de la película.
+     */
+    private String director;
+
+    /**
+     * Lista de copias asociadas a la película.
+     * Cada copia puede tener un estado diferente y otras características relacionadas.
+     */
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Copias> copias;
+}
