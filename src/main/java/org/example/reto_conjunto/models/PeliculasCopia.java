@@ -9,7 +9,7 @@ public class PeliculasCopia {
     private Integer cantidad;
     private String soporte;
 
-    // Constructor
+
     public PeliculasCopia(String nombrePeli, String genero, int anho, String director, String estado, Integer cantidad, String soporte) {
         this.nombrePeli = nombrePeli;
         this.genero = genero;
@@ -29,7 +29,7 @@ public class PeliculasCopia {
 
 
 
-    // Getters y Setters
+
     public String getNombrePeli() {
         return nombrePeli;
     }

@@ -78,11 +78,11 @@ public class PeliculasController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("detalles_pelicula.fxml"));
                 Parent detallesRoot = loader.load();
 
-                // Accede al controlador de la nueva pantalla y pásale la película seleccionada
+
                 DetallesPeliculaController detallesController = loader.getController();
                 detallesController.setPelicula(peliculaSeleccionada);
 
-                // Muestra la ventana de detalles
+
                 Stage detallesStage = new Stage();
                 detallesStage.setScene(new Scene(detallesRoot));
                 detallesStage.show();

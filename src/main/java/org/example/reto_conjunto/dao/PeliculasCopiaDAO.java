@@ -48,7 +48,7 @@
 
 
 
-        // Método para obtener el nombre de la película por su id_pelicula
+
         private static String getNombrePeliculaById(Integer idPelicula) {
             Session session = HibernateUtil.getSessionFactory().openSession();
             String nombrePeli = null;

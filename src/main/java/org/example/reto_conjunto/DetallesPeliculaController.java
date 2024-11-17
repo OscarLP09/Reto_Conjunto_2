@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import org.example.reto_conjunto.dao.PeliculasDAO;
 import org.example.reto_conjunto.models.Peliculas;
 import org.example.reto_conjunto.models.PeliculasCopia;
@@ -39,10 +37,10 @@ public class DetallesPeliculaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Agregar opciones a estadoChoice
+
         estadoChoice.getItems().addAll("disponible", "prestado", "en_mantenimiento", "no disponible");
 
-        // Configurar el Spinner con un ValueFactory inicial
+
         cantidadSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1));
     }
 
@@ -57,15 +55,15 @@ public class DetallesPeliculaController implements Initializable {
     }
 
     public void cargarPelicula(String nombrePeli) {
-        // Usamos el DAO para obtener la película completa desde la base de datos
+
         PeliculasDAO peliculaDao = new PeliculasDAO();
         Peliculas peliculaCompleta = peliculaDao.obtenerPeliculaPorNombre(nombrePeli);
 
-        // Verifica si la película fue encontrada
+
         if (peliculaCompleta != null) {
             System.out.println("Cargando detalles para la película: " + peliculaCompleta.getNombrePeli());
 
-            // Ahora creamos un objeto PeliculasCopia
+
             PeliculasCopia peliculaCopia = new PeliculasCopia(
                     "Inception",
                     "Ciencia Ficción",
